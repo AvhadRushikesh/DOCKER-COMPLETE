@@ -13,3 +13,5 @@ COPY . /app
 RUN npm install
 EXPOSE 5000
 CMD [ "node", "server.js" ]
+
+#docker run -p 5000:5000 imageId / imageName
