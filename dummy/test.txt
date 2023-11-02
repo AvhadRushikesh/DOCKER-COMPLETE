@@ -1,0 +1,9 @@
+hello!
+
+docker cp dummy/. containerName:/test --------- cp = allows us to copy file into running container
+                                                copy all the files from dummy folder (dummy = folderName, /. = all, 
+                                                test = this path will be created if it does not exist in container
+                                                /test = inside of your container you want to copy to)
+
+docker cp containerName:/test dummy ------------ If we delete the test file from our project that we copy in last command from dummy folder that we copied in container's test path by
+                                                                running this command we will get it back
