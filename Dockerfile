@@ -39,3 +39,6 @@ CMD [ "node", "server.js" ]
 
 #docker build -t feedback-node .
 #docker run -p 3000:3000 -d --name feedbacknodecontainer --rm feedback-node
+#docker stop feedbacknodecontainer
+#docker run -p 3000:3000 -d --name feedback-app feedback-node
+#localhost:3000/feedback/awesome.txt    --  Get data that is copied in container
