@@ -46,3 +46,11 @@ CMD [ "node", "server.js" ]
 
 #docker build -t feedback-node:volumes .
 #docker run -d -p 3000:3000 --rm --name feedback-app feedback-node:volumes
+
+#docker stop feedback-app
+#docker rmi feedback-node:volumes
+#docker build -t feedback-node:volumes
+#docker run -d -p 3000:3000 --rm --name feedback-app feedback-node:volumes
+#docker stop feedback-app
+#docker run -d -p 3000:3000 --rm --name feedback-app feedback-node:volumes
+#localhost:3000/feedback/awesome.txt
