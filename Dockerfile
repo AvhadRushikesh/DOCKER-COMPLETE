@@ -35,6 +35,7 @@ COPY package.json .
 RUN npm install
 COPY . .
 EXPOSE 3000
+VOLUME [ "/app/feedback" ]
 CMD [ "node", "server.js" ]
 
 #docker build -t feedback-node .
@@ -42,3 +43,6 @@ CMD [ "node", "server.js" ]
 #docker stop feedbacknodecontainer
 #docker run -p 3000:3000 -d --name feedback-app feedback-node
 #localhost:3000/feedback/awesome.txt    --  Get data that is copied in container
+
+#docker build -t feedback-node:volumes .
+#docker run -d -p 3000:3000 --rm --name feedback-app feedback-node:volumes
