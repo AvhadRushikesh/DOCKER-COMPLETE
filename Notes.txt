@@ -3,3 +3,20 @@ Introducing Volumes:
 Volumes are folders on your host machine-hard drive which are mounted ("mode available", mapped) into containers
 Volumes persist if a container shuts down.If a container (re-)starts & mounts volume, any data inside of that volume is available in the container.
 A container can write data into a volume and read data from it.
+
+
+
+
+
+create NamedVolume
+docker rmi feedback-node:volumes
+docker build -t feedback-node:volumes .
+docker run -d -p 3000:3000 --rm --name feedback-app -v feedback:/app/feedback feedback-node:volumes
+localhost:3000/feedback/awesome.txt
+docker stop feedback-app  -- this will remove container because we have use --rm tag in run container command
+but if we recreate container with same volumeName will get the copied data from volume by following url
+localhost:3000/feedback/awesome.txt
+we can check the volume using
+docker volume ls
+recreate / restart container with same volumeName
+docker run -d -p 3000:3000 --rm --name feedback-app -v feedback:/app/feedback feedback-node:volumes
