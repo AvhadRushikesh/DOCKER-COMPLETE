@@ -34,7 +34,8 @@ WORKDIR /app
 COPY package.json .
 RUN npm install
 COPY . .
-EXPOSE 3000
+ENV PORT 3000
+EXPOSE $PORT
 CMD [ "node", "server.js" ]
 
 #docker build -t feedback-node .
