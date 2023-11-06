@@ -62,15 +62,24 @@
 #localhost:3000/feedback/awesome.txt
 
 
-FROM node:14
+# FROM node:14
+# WORKDIR /app
+# COPY package.json .
+# RUN npm install
+# COPY . .
+# ARG DEFAULT_PORT=3000
+# ENV PORT $DEFAULT_PORT
+# EXPOSE $PORT
+# CMD [ "node", "start" ]
+
+#docker build -t feedback-node:web-app .
+#docker build -t feedback-node:dev --build-arg DEFAULT_PORT=5000 .
+
+
+
+FROM node
 WORKDIR /app
 COPY package.json .
 RUN npm install
 COPY . .
-ARG DEFAULT_PORT=3000
-ENV PORT $DEFAULT_PORT
-EXPOSE $PORT
-CMD [ "node", "start" ]
-
-#docker build -t feedback-node:web-app .
-#docker build -t feedback-node:dev --build-arg DEFAULT_PORT=5000 .
+CMD ["node", "app.js"]

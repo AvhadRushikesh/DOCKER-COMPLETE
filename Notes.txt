@@ -49,3 +49,9 @@ you might not want to include the secure data directly in your Dockerfile.
 the values are not part of the image since you point at that file when you run docker run.
 But make sure you don't commit that separate file as part of your source control repository,
 if you're using source control.
+
+
+Creating a container & communicating to the web (WWW)
+docker build -t favorites-node .
+docker run --name favorites -d --rm -p 3000:3000 favorites-node
+docker run --name favorites --rm -p 3000:3000 favorites-node (some connection faild - mongoDB)
