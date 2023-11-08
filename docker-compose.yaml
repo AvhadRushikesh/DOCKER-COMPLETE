@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+      # environment:
+        # MONGO_INTIDB_ROOT_USERNAME: avhad
+        # MONGO_INTIDB_ROOT_PASSWORD: secret
+        # - MONGO_INITDB_ROOT_USERNAME=max
+      
+      # we can create different file for environment variable & use it here if we want to put that file in .gitignore file & hide from everyone
+    env_file:
+      - ./env/mongo.env
+      # docker compose create default network for us & add all the container from docker-compose file to that network so we don't need to create network for this file but we can create if we want
+      # networks:
+      #  - goals-net
+
+    # docker-compose up
+    # docker-compose down
+  
+  # backend:
+  
+  # frontend:

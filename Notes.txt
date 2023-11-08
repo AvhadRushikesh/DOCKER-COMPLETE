@@ -61,3 +61,12 @@ docker run --name favorites --rm -p 3000:3000 favorites-node (some connection fa
 'mongodb://host.docker.internal:27017/swfavorites'
 docker build -t favorites-node .
 docker run --name favorites --rm -p 3000:3000 favorites-node
+
+
+// Container to Container communication
+docker run mongo
+docker run -d --name mongodb mongo
+docker container inspect mongo
+(get IPAddress of container - 172.17.0.2 & paste in app.js file)
+docker build -t favorites-node .
+docker run --name favorites -d --rm -p 3000:3000 favorites-node
