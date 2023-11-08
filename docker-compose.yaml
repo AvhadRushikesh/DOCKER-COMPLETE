@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  npm:
+    build: ./
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/app
+
+
+# docker-compose up (this will not work since we need to pass init / We don't need to add --rm it will delete automatically when we stop them)
+# docker-compose exec OR 
+# docker-compose run --rm npm   (this allows us to run single service from the file)
+# docker-compose run --rm npm init (this will create package.json file in project)
+# docker-compose down (stop container and delete automatically that we start using docker-compose up command)
