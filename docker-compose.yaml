@@ -44,7 +44,22 @@ services:
     # docker ps -- using this command we will see 2 container up & running (mongodb & backend)
     # docker compose down
 
-  # frontend:
+  frontend:
+    build: ./frontend # it only rebuilds if something / code change about that image
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend/scr:/app/scr
+    # if we want to send any input / parameter that we used to send using -it (iteractive mode)
+    stdin_open: true  # opening standard input
+    tty: true         # able to receive input start it in -it mode
+    depends_on:
+      - backend
+
+    # docker-compose up -d
+    # docker-compose down
+    # docker ps (should be able to see 3 containers are up & running)
+    
 
 # we need to add named volume here we added for container in this file like data for mongodb container and logs volume in backend container
 volumes:
