@@ -1,9 +1,10 @@
 version: "3.8"
 services:
-  mongodb:
+  mongodb: # (this is only service name the container name for this service will be created as docker-complete_mongodb_1)
     image: 'mongo'
     volumes:
       - data:/data/db
+    # container_name: mongodb # (using container_name we can force it to name the container as mongodb)
       # environment:
         # MONGO_INTIDB_ROOT_USERNAME: avhad
         # MONGO_INTIDB_ROOT_PASSWORD: secret
@@ -59,7 +60,7 @@ services:
     # docker-compose up -d
     # docker-compose down
     # docker ps (should be able to see 3 containers are up & running)
-    
+
 
 # we need to add named volume here we added for container in this file like data for mongodb container and logs volume in backend container
 volumes:
