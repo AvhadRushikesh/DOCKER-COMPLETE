@@ -19,6 +19,34 @@ services:
     # docker-compose up
     # docker-compose down
   
-  # backend:
-  
+
+  # (new container to build with the name backend for backend folder/ project)
+  backend:
+    build: ./backend  # (look for Dockerfile in backend folder of project & build images)
+    # if your docker file has different name we need to build like below
+    # build:
+      # context: ./backend
+      # dockerfile: Dockerfile-dev
+    ports:
+      - '5000:5000'
+      # - '3000:80' (we can specify multiple ports)
+    volumes:
+      - logs:/app/logs # Add Named Volume
+      - ./backend:/app # Bind Mount (Instead of using absolute path we used relative path using .)
+      - /app/node_modules # Add Anynomous volume
+    env_file:
+      - ./env/backend.env
+    # sometime 1 container might depend on another container here backend container depends on mongodb container which should be up & running therefore
+    depends_on:
+      - mongodb
+    
+    # docker compose up -d
+    # docker ps -- using this command we will see 2 container up & running (mongodb & backend)
+    # docker compose down
+
   # frontend:
+
+# we need to add named volume here we added for container in this file like data for mongodb container and logs volume in backend container
+volumes:
+  data:
+  logs:
